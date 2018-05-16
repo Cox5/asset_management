@@ -1,1 +1,0 @@
-Prvi commit <readme.txt> sa GitHub Desktop aplikacijom
