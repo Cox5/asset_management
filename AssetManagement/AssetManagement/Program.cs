@@ -10,6 +10,7 @@ namespace AssetManagement
     {
         static void Main(string[] args)
         {
+            // prvi komentar
         }
     }
 }
