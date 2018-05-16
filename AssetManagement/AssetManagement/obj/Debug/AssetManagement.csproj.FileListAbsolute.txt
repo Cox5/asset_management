@@ -1,7 +1,0 @@
-C:\Users\Milan\Desktop\RES\asset_management\AssetManagement\AssetManagement\bin\Debug\AssetManagement.exe.config
-C:\Users\Milan\Desktop\RES\asset_management\AssetManagement\AssetManagement\bin\Debug\AssetManagement.exe
-C:\Users\Milan\Desktop\RES\asset_management\AssetManagement\AssetManagement\bin\Debug\AssetManagement.pdb
-C:\Users\Milan\Desktop\RES\asset_management\AssetManagement\AssetManagement\obj\Debug\AssetManagement.csprojAssemblyReference.cache
-C:\Users\Milan\Desktop\RES\asset_management\AssetManagement\AssetManagement\obj\Debug\AssetManagement.csproj.CoreCompileInputs.cache
-C:\Users\Milan\Desktop\RES\asset_management\AssetManagement\AssetManagement\obj\Debug\AssetManagement.exe
-C:\Users\Milan\Desktop\RES\asset_management\AssetManagement\AssetManagement\obj\Debug\AssetManagement.pdb
