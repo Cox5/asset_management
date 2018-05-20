@@ -45,5 +45,11 @@
     <Compile Include="ILocalDevice.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LocalDevice\LocalDevice.csproj">
+      <Project>{5EB895FF-9A2C-4B98-A388-538C223A6FDA}</Project>
+      <Name>LocalDevice</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

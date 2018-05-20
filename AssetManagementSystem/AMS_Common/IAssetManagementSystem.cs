@@ -8,6 +8,6 @@ namespace AMS_Common
 {
     public interface IAssetManagementSystem
     {
-
+        
     }
 }

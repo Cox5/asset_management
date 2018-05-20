@@ -50,6 +50,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AMS_Common\AMS_Common.csproj">
+      <Project>{DDDB2275-758E-4E54-BB91-406F385032FB}</Project>
+      <Name>AMS_Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LocalDevice\LocalDevice.csproj">
       <Project>{5EB895FF-9A2C-4B98-A388-538C223A6FDA}</Project>
       <Name>LocalDevice</Name>

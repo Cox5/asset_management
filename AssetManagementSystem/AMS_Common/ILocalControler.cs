@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LocalDevice;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace AMS_Common
 {
     public interface ILocalControler
     {
-
+        string Id { get; set; }
+        Dictionary<string, LocalDeviceClass> Devices { get; set; }
     }
 }
