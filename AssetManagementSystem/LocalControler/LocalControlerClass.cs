@@ -12,7 +12,7 @@ namespace LocalControler
     public class LocalControlerClass : ILocalControler
     {
         public string Id { get; set; }
-        public Dictionary<string, LocalDeviceClass> Devices { get; set; }
+        public Dictionary<string, ILocalDevice> Devices { get; set; }
 
         public LocalControlerClass()
         {

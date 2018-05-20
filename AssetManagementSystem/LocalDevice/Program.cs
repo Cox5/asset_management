@@ -53,7 +53,7 @@ namespace LocalDevice
             {
                 try
                 {
-                    DirectoryInfo di = new DirectoryInfo(@"../Comunicaton/");
+                    DirectoryInfo di = new DirectoryInfo(@"../../../Comunicaton/");
                     dllFiles = di.GetFiles("*.xml");
 
                     Console.WriteLine("Sadrzaj Comunication foldera: ");
