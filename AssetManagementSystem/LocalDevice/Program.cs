@@ -10,7 +10,9 @@ namespace LocalDevice
     {
         static void Main(string[] args)
         {
-
+            Console.WriteLine("**************\nLOKALNI UREDJAJ**************");
+            Console.WriteLine("Dodavanje novog uredjaja: \n");
+            Console.WriteLine("Unesite ID uredjaja: ");
         }
     }
 }
