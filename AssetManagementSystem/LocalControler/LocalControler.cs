@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace LocalControler
 {
-    class Program
+    public class LocalControler
     {
-        static void Main(string[] args)
-        {
-
-        }
+        string Id { get; set; }
+        List<LocalDevice> Devices { get; set; }
     }
 }

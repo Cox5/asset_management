@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LocalControler
+namespace AMS_Common
 {
-    class Program
+    public interface ILocalControler
     {
-        static void Main(string[] args)
-        {
 
-        }
     }
 }
