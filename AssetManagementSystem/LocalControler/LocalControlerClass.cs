@@ -16,7 +16,7 @@ namespace LocalControler
 
         public LocalControlerClass()
         {
-            Console.WriteLine("**************\nLOKALNI Kontroler**************");
+            Console.WriteLine("**************LOKALNI Kontroler**************");
             Console.WriteLine("Dodavanje novog kontrolera: \n");
             Console.WriteLine("Unesite ID kontrolera: ");
             Id = Console.ReadLine();
