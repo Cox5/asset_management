@@ -1,4 +1,4 @@
-# asset_management
+# Asset Management System
 Dokumentacija za projekat iz Razvoja Elektroenergetskog Softvera 
 
 1. Lokalni uredjaj
