@@ -10,7 +10,9 @@ namespace LocalControler
     {
         static void Main(string[] args)
         {
-            LocalControlerClass controler = new LocalControlerClass();
+            LocalControlerClass controller = new LocalControlerClass();
+
+            controller.SendData();
 
             Console.ReadKey();
         }
