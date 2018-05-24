@@ -19,8 +19,11 @@ namespace LocalDevice
 
             localDeviceClass.ListDirectory();
 
-            var result = localDeviceClass.WriteToXML() ? "Uspesno dodat uredaj" : "Greska pri dodavanju uredjaja";
-            Console.WriteLine($"\n*********{result}*********");
+            while (true) {
+                var result = localDeviceClass.WriteToXML() ? "Uspesno dodat uredaj" : "Greska pri dodavanju uredjaja";
+                Console.WriteLine($"\n*********{result}*********");
+                Console.Read();
+            }
 
 
             Console.Read();

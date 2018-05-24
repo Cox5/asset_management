@@ -57,6 +57,13 @@ namespace LocalDevice
             Configuration = Console.ReadLine();
         }
 
+        public LocalDeviceClass(string id, string typeDevice, string value)
+        {
+            this.Id = id;
+            this.TypeDevice = TypeDevice;
+            this.Value = value;
+        }
+
 
         // Citanje direktorijuma Communication u kome se nalaze .xml fajlovi u koje upisujemo informacije o lokalnom uredjaju/ima
         public bool ListDirectory()

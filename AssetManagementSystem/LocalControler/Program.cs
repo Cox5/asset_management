@@ -12,6 +12,8 @@ namespace LocalControler
         {
             LocalControlerClass controller = new LocalControlerClass();
 
+            Console.ReadKey();
+            controller.RecieveData();
             controller.SendData();
 
             Console.ReadKey();

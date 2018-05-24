@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-<controller id="1">
-  <Device id="1">
-    <Type>d</Type>
-    <Time>2018-22-05 16:28:00</Time>
-    <Value>on</Value>
-  </Device>
-</controller>
+<controller id="1" />
