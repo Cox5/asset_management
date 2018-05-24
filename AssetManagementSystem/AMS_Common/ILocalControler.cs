@@ -9,6 +9,6 @@ namespace AMS_Common
     public interface ILocalControler
     {
         string Id { get; set; }
-        Dictionary<string, ILocalDevice> Devices { get; set; }
+        Dictionary<string, List<Tuple<string, ILocalDevice>>> Devices { get; set; }
     }
 }
