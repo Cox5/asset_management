@@ -7,6 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <TabControl>
+            <TabItem Header="Devices">
+                <Label Content="Tabelarni prikaz svih uredjaja..." />
+            </TabItem>
+            <TabItem Header="Device Info">
+                <Label Content="Informacije o uredjaju: sumirane promene i grafik za analogne tipove uredjaja"/>
+            </TabItem>
+            
+        </TabControl>
     </Grid>
 </Window>
