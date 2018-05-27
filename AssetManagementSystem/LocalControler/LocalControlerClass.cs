@@ -88,7 +88,9 @@ namespace LocalControler
                                             new XAttribute("id", item.Key),
                                             new XElement("Type", item1.Item2.TypeDevice),
                                             new XElement("Time", item1.Item1),
-                                            new XElement("Value", item1.Item2.Value)));
+                                            new XElement("Value", item1.Item2.Value),
+                                            new XElement("WorkTime", item1.Item2.WorkTime)));
+
                     }
 
                 }
@@ -120,7 +122,8 @@ namespace LocalControler
                 string type = node.SelectSingleNode("Type").InnerText;
                 string time = node.SelectSingleNode("Time").InnerText;
                 string value = node.SelectSingleNode("Value").InnerText;
-                Tuple<string, ILocalDevice> temp = new Tuple<string, ILocalDevice>(time, new LocalDeviceClass(id, type, value));
+                string workTime = node.SelectSingleNode("WorkTime").InnerText;
+                Tuple<string, ILocalDevice> temp = new Tuple<string, ILocalDevice>(time, new LocalDeviceClass(id, type, value, Double.Parse(workTime)));
 
                 if (Devices.ContainsKey(id)) {
                     Devices[id].Add(temp);

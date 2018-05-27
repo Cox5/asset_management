@@ -20,6 +20,7 @@ namespace LocalDevice
         public string TypeDevice { get; set; }
         public string Value { get; set; }
         public string Configuration { get; set; }
+        public double WorkTime { get; set; }
         #endregion
 
 
@@ -39,12 +40,18 @@ namespace LocalDevice
                 {
                     Console.Write("Unesite inicijalnu vrednost za analogni uredjaj (broj): ");
                     Value = Console.ReadLine();
+
+                    Console.Write("Unesite broj nominalnih radnih sati predvidjenih za uredjaj (broj) :");
+                    WorkTime = Double.Parse(Console.ReadLine());
                     break;
                 }
                 else if (TypeDevice.Equals("D") || TypeDevice.Equals("d"))
                 {
                     Console.Write("Unesite vrednost za digitalni uredjaj (ON/OFF/Open/Close): ");
                     Value = Console.ReadLine();
+
+                    Console.Write("Unesite broj nominalnih promena predvidjenih za uredjaj (broj) :");
+                    WorkTime = Double.Parse(Console.ReadLine());
                     break;
                 }
                 else
@@ -57,11 +64,12 @@ namespace LocalDevice
             Configuration = Console.ReadLine();
         }
 
-        public LocalDeviceClass(string id, string typeDevice, string value)
+        public LocalDeviceClass(string id, string typeDevice, string value, double workTime)
         {
             this.Id = id;
             this.TypeDevice = TypeDevice;
             this.Value = value;
+            this.WorkTime = workTime;
         }
 
 
@@ -103,7 +111,8 @@ namespace LocalDevice
                         new XAttribute("id", Id),
                         new XElement("Type", TypeDevice),
                         new XElement("Time", DateTime.Now.ToString("yyyy-dd-MM HH:mm:ss")),
-                        new XElement("Value", Value)
+                        new XElement("Value", Value),
+                        new XElement("WorkTime", WorkTime)
 
                     ));
 

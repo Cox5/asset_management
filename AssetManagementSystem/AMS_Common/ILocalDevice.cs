@@ -13,5 +13,6 @@ namespace AMS_Common
         string Value { get; set; }
         //U stringu se nalazi naziv fajla u koji uredjaj upisuje promene (u zavisnosti kako je konfigurisan)
         string Configuration { get; set; }
+        double WorkTime { get; set; }
     }
 }
