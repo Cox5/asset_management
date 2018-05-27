@@ -74,16 +74,20 @@ namespace LocalControler
                 String xmlFileName = @"..\..\..\Communication\AMS.xml";
                 XDocument xmlDoc = XDocument.Load(xmlFileName);
 
-                xmlDoc.Root.Add(new XElement("LocalControlerCode", new XAttribute("id", Id)),
+                xmlDoc.Root.Add(new XElement("LocalControllerCode", new XAttribute("id", Id),
                                 new XElement("Time", DateTime.Now.ToString("yyyy-dd-MM HH:mm:ss")),
-                                new XElement("List"));
+                                new XElement("List")));
 
+                var children = xmlDoc.Elements();
+                
                 XElement child1 = xmlDoc.Element("List");
+
+                XElement child2 = (XElement)xmlDoc.Element("AMS").DescendantNodes().Last();
                 foreach (var item in Devices)
                 {
                     foreach (var item1 in item.Value)
                     {
-                        child1.AddAfterSelf(
+                        child2.AddFirst(
                                             new XElement("Device",
                                             new XAttribute("id", item.Key),
                                             new XElement("Type", item1.Item2.TypeDevice),
