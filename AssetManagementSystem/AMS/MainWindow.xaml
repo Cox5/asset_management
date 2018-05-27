@@ -5,11 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AMS"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="680" Width="1015"
+        ResizeMode="NoResize">
     <Grid>
         <TabControl>
             <TabItem Header="Devices">
-                <Label Content="Tabelarni prikaz svih uredjaja..." />
+
+
+                <DataGrid x:Name="dataGridDevices" HorizontalAlignment="Left" Height="487" Margin="10,97,0,0" VerticalAlignment="Top"
+ Width="987" ItemsSource="{Binding LocalDeviceClass}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        
+                    </DataGrid.Columns> 
+                    
+                </DataGrid>                
             </TabItem>
             <TabItem Header="Device Info">
                 <Label Content="Informacije o uredjaju: sumirane promene i grafik za analogne tipove uredjaja"/>
