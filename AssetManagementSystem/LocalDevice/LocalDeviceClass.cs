@@ -67,7 +67,7 @@ namespace LocalDevice
         public LocalDeviceClass(string id, string typeDevice, string value, double workTime)
         {
             this.Id = id;
-            this.TypeDevice = TypeDevice;
+            this.TypeDevice = typeDevice;
             this.Value = value;
             this.WorkTime = workTime;
         }
