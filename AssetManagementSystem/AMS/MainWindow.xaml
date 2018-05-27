@@ -15,7 +15,8 @@
                 <DataGrid x:Name="dataGridDevices" HorizontalAlignment="Left" Height="487" Margin="10,97,0,0" VerticalAlignment="Top"
  Width="987" ItemsSource="{Binding LocalDeviceClass}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False">
                     <DataGrid.Columns>
-                        
+                        <DataGridTextColumn Header="Key" Binding="{Binding Key}" />
+                        <DataGridTextColumn Header="Value" Binding="{Binding Value}" />
                     </DataGrid.Columns> 
                     
                 </DataGrid>                

@@ -1,3 +1,13 @@
 <AMS>
-
+<LocalControllerCode id="1">
+    <Time>2018-27-05 16:23</Time>
+	<List>
+		<Device id="1">
+			<Type>A</Type>
+			<Time>2018-27-04 20:00</Time>
+			<Value>1500</Value>
+			<WorkTime>3500</WorkTime>
+		</Device>
+	</List>
+</LocalControllerCode>
 </AMS>
