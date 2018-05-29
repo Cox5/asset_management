@@ -12,11 +12,14 @@
             <TabItem Header="Devices">
 
 
-                <DataGrid x:Name="dataGridDevices" HorizontalAlignment="Left" Height="487" Margin="10,97,0,0" VerticalAlignment="Top"
- Width="987" ItemsSource="{Binding LocalDeviceClass}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False">
+                <DataGrid x:Name="dataGridDevices" HorizontalAlignment="Left" ColumnWidth="*" Height="487" Margin="10,97,0,0" VerticalAlignment="Top"
+                Width="987" ItemsSource="{Binding DevicesBindingList}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Key" Binding="{Binding Key}" />
+                        <DataGridTextColumn Header="Key" Binding="{Binding Id}" />
+                        <DataGridTextColumn Header="Configuration" Binding="{Binding Configuration}" />
+                        <DataGridTextColumn Header="TypeDevice" Binding="{Binding TypeDevice}" />
                         <DataGridTextColumn Header="Value" Binding="{Binding Value}" />
+                        <DataGridTextColumn Header="WokrTime" Binding="{Binding WorkTime}" />
                     </DataGrid.Columns> 
                     
                 </DataGrid>                

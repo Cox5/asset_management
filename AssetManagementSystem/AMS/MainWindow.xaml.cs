@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,20 +24,32 @@ namespace AMS
     /// </summary>
     public partial class MainWindow : Window
     {
-        //public ObservableCollection<>
         AMSClass ams = new AMSClass();
-        public Dictionary<int, List<Tuple<string, List<Tuple<string, ILocalDevice>>>>> AMSDatabase { get; set; }
-        public static BindingList<Dictionary<int, List<Tuple<string, List<Tuple<string, ILocalDevice>>>>>> DevicesBindingList { get; set; }
+        public static BindingList<Device> DevicesBindingList { get; set; }
+        private Object lockThis = new Object();
         
 
         public MainWindow()
         {
-            InitializeComponent();
-            if (DevicesBindingList == null)
-            {
-                //DevicesBindingList = new BindingList<Dictionary<int, List<Tuple<string, List<Tuple<string, ILocalDevice>>>>>>(AMSDatabase);
-            }
+            
+            DevicesBindingList = new BindingList<Device>();
             DataContext = this;
+            InitializeComponent();
+            StartRefresh();
+        }
+
+        public void StartRefresh()
+        {
+            Thread refresh = new Thread(()=> {
+                while (true)
+                {
+                    this.Dispatcher.Invoke(() => { RealTimeProcessing.ProcessingData(ams.AMSDatabase, DevicesBindingList); });
+                    
+                    Thread.Sleep(2000);
+                }
+            });
+            
+            refresh.Start();
         }
     }
 }
