@@ -19,14 +19,17 @@ namespace AMS
             xmlDoc.Load(@"..\..\..\Communication\AMS.xml");
 
             XmlNodeList nodeList = xmlDoc.DocumentElement.SelectNodes("/AMS/LocalControllerCode");
-            XmlNodeList nodeList2 = xmlDoc.DocumentElement.SelectNodes("/AMS/LocalControllerCode/List/Device");
                 
             List<Device> newDevices = new List<Device>();
+            List<Tuple<string, ILocalDevice>> tuples = new List<Tuple<string, ILocalDevice>>();
+            List<Tuple<string, List<Tuple<string, ILocalDevice>>>> listOfTuples = null;
 
             foreach (XmlNode node in nodeList)
             {
                 int controllerId = Convert.ToInt32(node.Attributes["id"].Value);
                 string controllerTime = node.SelectSingleNode("Time").InnerText;
+
+                XmlNodeList nodeList2 = node.ChildNodes[1].ChildNodes;
 
                 foreach (XmlNode node2 in nodeList2)
                 {
@@ -40,26 +43,21 @@ namespace AMS
                     if (!DeviceContains(Convert.ToString(controllerId), deviceId, newDevices)) {
                         newDevices.Add(deviceExample);
                     }
-
-                    if (!AMSDatabase.ContainsKey(controllerId)) {
-                        Tuple<string, ILocalDevice> deviceTuple = new Tuple<string, ILocalDevice>(deviceTime, new LocalDeviceClass(deviceId, deviceType, deviceValue, Double.Parse(deviceWorkTime)));
-                        List<Tuple<string, ILocalDevice>> tuples = new List<Tuple<string, ILocalDevice>>
-                        {
-                            deviceTuple
-                        };
-                            Tuple<string, List<Tuple<string, ILocalDevice>>> controllerTuple = new Tuple<string, List<Tuple<string, ILocalDevice>>>(controllerTime, tuples);
-                            List<Tuple<string, List<Tuple<string, ILocalDevice>>>> listOfTuples = new List<Tuple<string, List<Tuple<string, ILocalDevice>>>>
-                        {
-                            controllerTuple
-                        };
-                        AMSDatabase.Add(controllerId, listOfTuples);
-                    }
-                    else
-                    {
-                        //AMSDatabase[controllerId].Add()
-                    }
-                    //Izmesititi ove liste tupli sa uredjajima da budu iznad fora, i srediti logiku za upis u listu i dictionary...
+                    Tuple<string, ILocalDevice> deviceTuple = new Tuple<string, ILocalDevice>(deviceTime, new LocalDeviceClass(deviceId, deviceType, deviceValue, Double.Parse(deviceWorkTime)));
                     
+
+                    tuples.Add(deviceTuple);
+
+                }
+
+                if (!AMSDatabase.ContainsKey(controllerId))
+                {
+                    listOfTuples = new List<Tuple<string, List<Tuple<string, ILocalDevice>>>>() { new Tuple<string, List<Tuple<string, ILocalDevice>>>(controllerTime, tuples) };
+                    AMSDatabase.Add(controllerId, listOfTuples);
+                }
+                else
+                {
+                    AMSDatabase[controllerId].Add(new Tuple<string, List<Tuple<string, ILocalDevice>>>(controllerTime, tuples));
                 }
             }
                 RefreshUserInterface(devices, newDevices);

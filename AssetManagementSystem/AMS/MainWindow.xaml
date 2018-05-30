@@ -8,7 +8,7 @@
         Title="MainWindow" Height="680" Width="1015"
         ResizeMode="NoResize">
     <Grid>
-        <TabControl SelectionChanged="TabControl_SelectionChanged">
+        <TabControl>
             <TabItem Header="Devices">
 
 

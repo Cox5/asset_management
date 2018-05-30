@@ -6,7 +6,7 @@
       <Device id="1">
         <Type>a</Type>
         <Time>2018-27-05 18:22:53</Time>
-        <Value>23</Value>
+        <Value>56</Value>
         <WorkTime>34</WorkTime>
       </Device>
       <Device id="1">
@@ -19,6 +19,52 @@
         <Type>a</Type>
         <Time>2018-27-05 18:22:47</Time>
         <Value>23</Value>
+        <WorkTime>34</WorkTime>
+      </Device>
+    </List>
+  </LocalControllerCode>
+  <LocalControllerCode id="2">
+    <Time>2018-27-05 18:23:13</Time>
+    <List>
+      <Device id="1">
+        <Type>a</Type>
+        <Time>2018-27-05 18:22:53</Time>
+        <Value>16</Value>
+        <WorkTime>34</WorkTime>
+      </Device>
+      <Device id="1">
+        <Type>a</Type>
+        <Time>2018-27-05 18:22:52</Time>
+        <Value>23</Value>
+        <WorkTime>34</WorkTime>
+      </Device>
+      <Device id="1">
+        <Type>a</Type>
+        <Time>2018-27-05 18:22:47</Time>
+        <Value>23</Value>
+        <WorkTime>34</WorkTime>
+      </Device>
+    </List>
+  </LocalControllerCode>
+  <LocalControllerCode id="3">
+    <Time>2018-27-05 18:23:13</Time>
+    <List>
+      <Device id="1">
+        <Type>a</Type>
+        <Time>2018-27-05 18:22:53</Time>
+        <Value>1</Value>
+        <WorkTime>34</WorkTime>
+      </Device>
+      <Device id="1">
+        <Type>a</Type>
+        <Time>2018-27-05 18:22:52</Time>
+        <Value>4545</Value>
+        <WorkTime>34</WorkTime>
+      </Device>
+      <Device id="1">
+        <Type>a</Type>
+        <Time>2018-27-05 18:22:47</Time>
+        <Value>4545</Value>
         <WorkTime>34</WorkTime>
       </Device>
     </List>
