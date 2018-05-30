@@ -74,7 +74,7 @@ namespace LocalDevice
 
 
         // Citanje direktorijuma Communication u kome se nalaze .xml fajlovi u koje upisujemo informacije o lokalnom uredjaju/ima
-        public bool ListDirectory()
+        public static bool ListDirectory()
         {
             try
             {

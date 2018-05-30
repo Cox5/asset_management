@@ -33,9 +33,14 @@ namespace AMS
         {
             
             DevicesBindingList = new BindingList<Device>();
+
             DataContext = this;
             InitializeComponent();
             StartRefresh();
+            comboBoxController.ItemsSource = RealTimeProcessing.controllerListUI;
+            comboBoxDevices.ItemsSource = RealTimeProcessing.devicesListUI;
+            // za svaki kontroler iscitaj uredjaje koji njemu pripadaju
+            // za svaki uredjaj uzmi njegove informacije i prikazi na grafiku
         }
 
         public void StartRefresh()
@@ -49,7 +54,26 @@ namespace AMS
                 }
             });
             
+
             refresh.Start();
+        }
+
+
+        private void comboBoxDevices_DropDownOpened(object sender, EventArgs e)
+        {
+            comboBoxDevices.ItemsSource = RealTimeProcessing.devicesListUI;
+            comboBoxDevices.Items.Refresh();
+        }
+
+        private void comboBoxController_DropDownOpened(object sender, EventArgs e)
+        {
+            comboBoxController.ItemsSource = RealTimeProcessing.controllerListUI;
+            comboBoxController.Items.Refresh();
+        }
+
+        private void comboBoxController_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var index = Convert.ToInt32(comboBoxController.SelectedItem);
         }
     }
 }

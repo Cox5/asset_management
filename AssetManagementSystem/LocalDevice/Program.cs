@@ -15,9 +15,10 @@ namespace LocalDevice
         static void Main(string[] args)
         {
 
+            LocalDeviceClass.ListDirectory();
+
             LocalDeviceClass localDeviceClass = new LocalDeviceClass();
 
-            localDeviceClass.ListDirectory();
 
             while (true) {
                 var result = localDeviceClass.WriteToXML() ? "Uspesno dodat uredaj" : "Greska pri dodavanju uredjaja";

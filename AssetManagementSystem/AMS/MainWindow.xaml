@@ -10,16 +10,14 @@
     <Grid>
         <TabControl>
             <TabItem Header="Devices">
-
-
                 <DataGrid x:Name="dataGridDevices" HorizontalAlignment="Left" ColumnWidth="*" Height="487" Margin="10,97,0,0" VerticalAlignment="Top"
                 Width="987" ItemsSource="{Binding DevicesBindingList}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Key" Binding="{Binding Id}" />
                         <DataGridTextColumn Header="Configuration" Binding="{Binding Configuration}" />
-                        <DataGridTextColumn Header="TypeDevice" Binding="{Binding TypeDevice}" />
+                        <DataGridTextColumn Header="Device Type" Binding="{Binding TypeDevice}" />
                         <DataGridTextColumn Header="Value" Binding="{Binding Value}" />
-                        <DataGridTextColumn Header="WokrTime" Binding="{Binding WorkTime}" />
+                        <DataGridTextColumn Header="Work Time" Binding="{Binding WorkTime}" />
                     </DataGrid.Columns>
 
                 </DataGrid>
@@ -28,15 +26,25 @@
                 <!--" ComboBox x:Name="Kontroleri" Height="28" Margin="0,34,794,0" HorizontalAlignment="Right" Width="169" VerticalAlignment="Top"/-->
 
                 <Canvas Margin="10,0,13,0" Height="609" VerticalAlignment="Bottom">
-                    <ComboBox Height="32" Width="195" Canvas.Left="10" Canvas.Top="10"/>
-                    <ComboBox Height="32" Width="195" Canvas.Left="257" Canvas.Top="10"/>
-                    <DatePicker Height="26" Width="195" Canvas.Left="257" Canvas.Top="52"/>
-                    <DatePicker Height="26" Width="195" Canvas.Left="10" Canvas.Top="52"/>
-                    <DataGrid Height="204" Width="472" Canvas.Left="478" Canvas.Top="52">
-                        
+                    <Label Name="lblController" Content="Choose controller: " Canvas.Left="10"></Label>
+                    <Label Name="lblDevice" Content="Choose device ID: " Canvas.Left="257"></Label>
+                    <ComboBox x:Name="comboBoxController" Height="24" Width="182" Canvas.Left="10" Canvas.Top="26" DropDownOpened="comboBoxController_DropDownOpened" SelectionChanged="comboBoxController_SelectionChanged"/>
+                    <ComboBox x:Name="comboBoxDevices" Height="24" Width="183" Canvas.Left="257" Canvas.Top="26" DropDownOpened="comboBoxDevices_DropDownOpened"/>
+                    <DatePicker Height="26" Width="183" Canvas.Left="257" Canvas.Top="75"/>
+                    <DatePicker Height="26" Width="182" Canvas.Left="10" Canvas.Top="75"/>
+                    <DataGrid Height="204" Width="472" Canvas.Left="479" Canvas.Top="26">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Key" Binding="{Binding Id}" />
+                            <DataGridTextColumn Header="Configuration" Binding="{Binding Configuration}" />
+                            <DataGridTextColumn Header="Device Type" Binding="{Binding TypeDevice}" />
+                            <DataGridTextColumn Header="Value" Binding="{Binding Value}" />
+                            <DataGridTextColumn Header="Work Time" Binding="{Binding WorkTime}" />
+                        </DataGrid.Columns>
                     </DataGrid>
+                    <!-- Chart ide ovde (potrebna biblioteka preko Nugeta -->
                 </Canvas>
             </TabItem>
+
 
 
 

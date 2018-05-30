@@ -13,6 +13,8 @@ namespace AMS
 {
     public static class RealTimeProcessing
     {
+        public static List<int> controllerListUI = new List<int>();
+        public static List<string> devicesListUI = new List<string>();
         public static void ProcessingData(Dictionary<int, List<Tuple<string, List<Tuple<string, ILocalDevice>>>>> AMSDatabase, BindingList<Device> devices)
         {
             XmlDocument xmlDoc = new XmlDocument();
@@ -48,6 +50,8 @@ namespace AMS
 
                     tuples.Add(deviceTuple);
 
+
+
                 }
 
                 if (!AMSDatabase.ContainsKey(controllerId))
@@ -59,6 +63,21 @@ namespace AMS
                 {
                     AMSDatabase[controllerId].Add(new Tuple<string, List<Tuple<string, ILocalDevice>>>(controllerTime, tuples));
                 }
+
+                // Logika za dodavanje kontrolera u combo box, tj. da ne postoje duplikati u drop down listi
+                if (!controllerListUI.Contains(controllerId))
+                {
+                    controllerListUI.Add(controllerId);
+                }
+
+                for (int i = 0; i < tuples.Count; i++)
+                {
+                    if (!devicesListUI.Contains(tuples[i].Item2.Id))
+                    {
+                        devicesListUI.Add(tuples[i].Item2.Id);
+                    }
+                }
+
             }
                 RefreshUserInterface(devices, newDevices);
         }
@@ -73,6 +92,7 @@ namespace AMS
                 }
             
         }
+
 
         public static bool DeviceContains(string controllerId, string deviceId, List<Device> devices)
         {
