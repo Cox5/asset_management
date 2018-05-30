@@ -8,7 +8,7 @@
         Title="MainWindow" Height="680" Width="1015"
         ResizeMode="NoResize">
     <Grid>
-        <TabControl>
+        <TabControl SelectionChanged="TabControl_SelectionChanged">
             <TabItem Header="Devices">
 
 
@@ -20,14 +20,27 @@
                         <DataGridTextColumn Header="TypeDevice" Binding="{Binding TypeDevice}" />
                         <DataGridTextColumn Header="Value" Binding="{Binding Value}" />
                         <DataGridTextColumn Header="WokrTime" Binding="{Binding WorkTime}" />
-                    </DataGrid.Columns> 
-                    
-                </DataGrid>                
+                    </DataGrid.Columns>
+
+                </DataGrid>
             </TabItem>
             <TabItem Header="Device Info">
-                <Label Content="Informacije o uredjaju: sumirane promene i grafik za analogne tipove uredjaja"/>
+                <!--" ComboBox x:Name="Kontroleri" Height="28" Margin="0,34,794,0" HorizontalAlignment="Right" Width="169" VerticalAlignment="Top"/-->
+
+                <Canvas Margin="10,0,13,0" Height="609" VerticalAlignment="Bottom">
+                    <ComboBox Height="32" Width="195" Canvas.Left="10" Canvas.Top="10"/>
+                    <ComboBox Height="32" Width="195" Canvas.Left="257" Canvas.Top="10"/>
+                    <DatePicker Height="26" Width="195" Canvas.Left="257" Canvas.Top="52"/>
+                    <DatePicker Height="26" Width="195" Canvas.Left="10" Canvas.Top="52"/>
+                    <DataGrid Height="204" Width="472" Canvas.Left="478" Canvas.Top="52">
+                        
+                    </DataGrid>
+                </Canvas>
             </TabItem>
-            
+
+
+
+
         </TabControl>
     </Grid>
 </Window>
