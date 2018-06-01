@@ -27,12 +27,15 @@
                 <!--" ComboBox x:Name="Kontroleri" Height="28" Margin="0,34,794,0" HorizontalAlignment="Right" Width="169" VerticalAlignment="Top"/-->
 
                 <Canvas Margin="10,0,13,0" Height="609" VerticalAlignment="Bottom">
-                    <Label Name="lblController" Content="Choose controller: " Canvas.Left="10"></Label>
-                    <Label Name="lblDevice" Content="Choose device ID: " Canvas.Left="257"></Label>
-                    <ComboBox x:Name="comboBoxController" Height="24" Width="182" Canvas.Left="10" Canvas.Top="26" DropDownOpened="comboBoxController_DropDownOpened" SelectionChanged="comboBoxController_SelectionChanged"/>
-                    <ComboBox x:Name="comboBoxDevices" Height="24" Width="183" Canvas.Left="257" Canvas.Top="26" DropDownOpened="comboBoxDevices_DropDownOpened" SelectionChanged="comboBoxDevices_SelectionChanged"/>
-                    <DatePicker x:Name="startDatePicker" Height="26" Width="183" Canvas.Left="257" Canvas.Top="75"/>
-                    <DatePicker x:Name="endDatePicker" Height="26" Width="182" Canvas.Left="10" Canvas.Top="75"/>
+                    <!--<Label Name="lblController" Content="Choose controller: " Canvas.Left="10"></Label>-->
+                    <Label Name="lblDevice" Content="Choose device ID: " Canvas.Left="10" Canvas.Top="-5"></Label>
+                    <!--<ComboBox x:Name="comboBoxController" Height="24" Width="182" Canvas.Left="10" Canvas.Top="26" DropDownOpened="comboBoxController_DropDownOpened" SelectionChanged="comboBoxController_SelectionChanged"/>-->
+                    <ComboBox x:Name="comboBoxDevices" Height="24" Width="183" Canvas.Left="10" Canvas.Top="26" DropDownOpened="comboBoxDevices_DropDownOpened" SelectionChanged="comboBoxDevices_SelectionChanged"/>
+                    <Label Name="lblStartDate" Content="Start date:" Canvas.Left="10" Canvas.Top="58" Width="115"></Label>
+                    <Label Name="lblEndDate" Content="End date:" Canvas.Left="259" Canvas.Top="58" Width="115"></Label>
+                    <DatePicker x:Name="startDatePicker" Height="26" Width="182" Canvas.Left="11" Canvas.Top="84" SelectedDateChanged="startDatePicker_SelectedDateChanged"/>
+                    <DatePicker x:Name="endDatePicker" Height="26" Width="183" Canvas.Left="259" Canvas.Top="84"/>
+                    <Button x:Name="btnShowChart" Content="Show Chart" Height="28" Width="90" Canvas.Left="352" Canvas.Top="134" Click="btnShowChart_Click"/>
                     <DataGrid x:Name="dataGridTab2" Height="204" Width="472" Canvas.Left="479" Canvas.Top="26" ItemsSource="{Binding DevicesBindingList2}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
@@ -43,11 +46,12 @@
                         </DataGrid.Columns>
                     </DataGrid>
                     <!-- Chart ide ovde (potrebna biblioteka preko Nugeta -->
-                    <chartingToolkit:Chart  Name="lineChart" Title="Analog Device chart" VerticalAlignment="Top" Height="254" Canvas.Left="228" Canvas.Top="323" Width="614">
+                    <chartingToolkit:Chart  Name="lineChart" Title="Analog Device chart" VerticalAlignment="Top" Height="329" Canvas.Left="10" Canvas.Top="270" Width="960">
                         <chartingToolkit:LineSeries  DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}" IsSelectionEnabled="True"/>
                     </chartingToolkit:Chart>
                 </Canvas>
             </TabItem>
+
 
 
 

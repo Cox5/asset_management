@@ -24,9 +24,15 @@ namespace AMS
     /// </summary>
     public partial class MainWindow : Window
     {
+        /* triger za pauziranje thread-a za chart: kada je izabran samo uredjaj iz combo box-a, chart se ucitava svake 3 sekunde (thread je aktivan) => datumi nisu odabrani
+         * kada su datumi odabrani, treba samo jednom iscrtati promene za dati period i pauzira se thread i jednom se poziva funckija za crtanja charta */
+        ManualResetEvent trigger = new ManualResetEvent(false);         
+
         AMSClass ams = new AMSClass();
         public static BindingList<Device> DevicesBindingList { get; set; }
         public static BindingList<Device> DevicesBindingList2 { get; set; }
+        public static List<KeyValuePair<string, int>> valueList = null;         // lista za iscrtavanje charta
+        public int counter = 0; // brojac za chart na x osi
         private Object lockThis = new Object();
 
         // reference za odabir opcija iz combo box-a
@@ -42,12 +48,11 @@ namespace AMS
             DataContext = this;
             InitializeComponent();
             StartRefresh();
-            comboBoxController.ItemsSource = RealTimeProcessing.controllerListUI;
+            StartChart();
+            
+            //comboBoxController.ItemsSource = RealTimeProcessing.controllerListUI;
             comboBoxDevices.ItemsSource = RealTimeProcessing.devicesListUI;
-            // za svaki kontroler iscitaj uredjaje koji njemu pripadaju
-            // za svaki uredjaj uzmi njegove informacije i prikazi na grafiku
 
-            //showColumnChart();
         }
 
         public void StartRefresh()
@@ -57,7 +62,7 @@ namespace AMS
                 while (true)
                 {
                     this.Dispatcher.Invoke(() => { RealTimeProcessing.ProcessingData(ams.AMSDatabase, DevicesBindingList); });
-                    this.Dispatcher.Invoke(() => { showColumnChart(); });
+
 
                     Thread.Sleep(2000);
                 }
@@ -65,6 +70,22 @@ namespace AMS
 
 
             refresh.Start();
+        }
+
+        // premestanje charta u poseban thread zbog pauziranja thread-a
+        public void StartChart()
+        {
+            Thread chartThread = new Thread(() =>
+            {
+                while (true)
+                {
+                    this.Dispatcher.Invoke(() => { showColumnChart(); });
+                    trigger.WaitOne();      
+                    Thread.Sleep(3000);
+                }
+            });
+
+            chartThread.Start();
         }
 
 
@@ -76,21 +97,24 @@ namespace AMS
             comboBoxDevices.Items.Refresh();
         }
 
-        private void comboBoxController_DropDownOpened(object sender, EventArgs e)
-        {
-            comboBoxController.ItemsSource = RealTimeProcessing.controllerListUI;
-            comboBoxController.Items.Refresh();
-        }
+        //private void comboBoxController_DropDownOpened(object sender, EventArgs e)
+        //{
+        //    comboBoxController.ItemsSource = RealTimeProcessing.controllerListUI;
+        //    comboBoxController.Items.Refresh();
+        //}
 
-        private void comboBoxController_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            selectedControllerID = Convert.ToInt32(comboBoxController.SelectedItem);
-        }
+        //private void comboBoxController_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    selectedControllerID = Convert.ToInt32(comboBoxController.SelectedItem);
+        //}
 
         private void comboBoxDevices_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            trigger.Set();
             Device d = new Device();
             DevicesBindingList2.Clear();
+            valueList.Clear();
+            counter = 0;
             // biranje uredjaja iz cmb Box i smestanje u  promenljivu
             selectedDeviceID = Convert.ToString(comboBoxDevices.SelectedItem);
             if (dataGridTab2.Items.Count > 0)
@@ -116,6 +140,7 @@ namespace AMS
                 }
             }
             dataGridTab2.Items.Refresh();
+            
 
         }
 
@@ -124,13 +149,18 @@ namespace AMS
         private void showColumnChart()
         {
 
+            valueList = new List<KeyValuePair<string, int>>();
+            //if (!String.IsNullOrEmpty(startDatePicker.Text))
+                valueList.Add(new KeyValuePair<string, int>(startDatePicker.Text, 0));
 
-            List<KeyValuePair<string, int>> valueList = new List<KeyValuePair<string, int>>();
-            valueList.Add(new KeyValuePair<string, int>(Convert.ToString(endDatePicker), 60));
-            valueList.Add(new KeyValuePair<string, int>("Misc", 20));
-            valueList.Add(new KeyValuePair<string, int>("Tester", 50));
-            valueList.Add(new KeyValuePair<string, int>("QA", 30));
-            valueList.Add(new KeyValuePair<string, int>(Convert.ToString(startDatePicker), 40));
+
+            for (int i = 0; i < DevicesBindingList2.Count; i++)
+            {
+                valueList.Add(new KeyValuePair<string, int>(String.Empty, Convert.ToInt32(DevicesBindingList2[i].Value)));
+            }
+
+            //if (!String.IsNullOrEmpty(endDatePicker.Text))
+                valueList.Add(new KeyValuePair<string, int>(endDatePicker.Text, 0));
 
             //Setting data for line chart
 
@@ -138,6 +168,24 @@ namespace AMS
 
 
 
+        }
+
+        private void startDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            trigger.Set();              // nastavi sa radom  
+        }
+
+        private void btnShowChart_Click(object sender, RoutedEventArgs e)
+        {
+            if (String.IsNullOrEmpty(startDatePicker.Text) || String.IsNullOrEmpty(endDatePicker.Text))
+            {
+                MessageBox.Show("You must select time interval in order for chart to be displayed!", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                trigger.Reset();        // pauziraj thread
+                showColumnChart();
+            }
         }
     }
 }
