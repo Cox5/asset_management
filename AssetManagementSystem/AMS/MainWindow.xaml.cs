@@ -25,7 +25,6 @@ namespace AMS
     public partial class MainWindow : Window
     {
         AMSClass ams = new AMSClass();
-        Device d = new Device();
         public static BindingList<Device> DevicesBindingList { get; set; }
         public static BindingList<Device> DevicesBindingList2 { get; set; }
         private Object lockThis = new Object();
@@ -90,7 +89,8 @@ namespace AMS
 
         private void comboBoxDevices_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            DevicesBindingList.Clear();
+            Device d = new Device();
+            DevicesBindingList2.Clear();
             // biranje uredjaja iz cmb Box i smestanje u  promenljivu
             selectedDeviceID = Convert.ToString(comboBoxDevices.SelectedItem);
             if (dataGridTab2.Items.Count > 0)
@@ -103,13 +103,14 @@ namespace AMS
             // prodji kroz sve uredjaje i za dati ID izaberi sve promene za taj uredjaj
             for (int i = 0; i < RealTimeProcessing.tuples.Count; i++)
             {
+
                 if (selectedDeviceID == RealTimeProcessing.tuples[i].Item2.Id)
                 {
-                    RealTimeProcessing.tuples[i].Item2.Id = d.Id;
-                    RealTimeProcessing.tuples[i].Item2.Configuration = d.Configuration;
-                    RealTimeProcessing.tuples[i].Item2.TypeDevice = d.TypeDevice;
-                    RealTimeProcessing.tuples[i].Item2.Value = d.Value;
-                    RealTimeProcessing.tuples[i].Item2.WorkTime = d.WorkTime;
+                    d.Id = RealTimeProcessing.tuples[i].Item2.Id;
+                    d.Configuration = RealTimeProcessing.tuples[i].Item2.Configuration;
+                    d.TypeDevice = RealTimeProcessing.tuples[i].Item2.TypeDevice;
+                    d.Value = RealTimeProcessing.tuples[i].Item2.Value;
+                    d.WorkTime = RealTimeProcessing.tuples[i].Item2.WorkTime;
 
                     DevicesBindingList2.Add(d);
                 }
