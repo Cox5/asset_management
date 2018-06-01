@@ -15,6 +15,7 @@ namespace AMS
     {
         public static List<int> controllerListUI = new List<int>();
         public static List<string> devicesListUI = new List<string>();
+        public static List<Tuple<string, ILocalDevice>> tuples = new List<Tuple<string, ILocalDevice>>();
         public static void ProcessingData(Dictionary<int, List<Tuple<string, List<Tuple<string, ILocalDevice>>>>> AMSDatabase, BindingList<Device> devices)
         {
             XmlDocument xmlDoc = new XmlDocument();
@@ -23,7 +24,7 @@ namespace AMS
             XmlNodeList nodeList = xmlDoc.DocumentElement.SelectNodes("/AMS/LocalControllerCode");
                 
             List<Device> newDevices = new List<Device>();
-            List<Tuple<string, ILocalDevice>> tuples = new List<Tuple<string, ILocalDevice>>();
+            
             List<Tuple<string, List<Tuple<string, ILocalDevice>>>> listOfTuples = null;
 
             foreach (XmlNode node in nodeList)

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AMS"
+        xmlns:chartingToolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
         mc:Ignorable="d"
         Title="MainWindow" Height="680" Width="1015"
         ResizeMode="NoResize">
@@ -29,12 +30,12 @@
                     <Label Name="lblController" Content="Choose controller: " Canvas.Left="10"></Label>
                     <Label Name="lblDevice" Content="Choose device ID: " Canvas.Left="257"></Label>
                     <ComboBox x:Name="comboBoxController" Height="24" Width="182" Canvas.Left="10" Canvas.Top="26" DropDownOpened="comboBoxController_DropDownOpened" SelectionChanged="comboBoxController_SelectionChanged"/>
-                    <ComboBox x:Name="comboBoxDevices" Height="24" Width="183" Canvas.Left="257" Canvas.Top="26" DropDownOpened="comboBoxDevices_DropDownOpened"/>
+                    <ComboBox x:Name="comboBoxDevices" Height="24" Width="183" Canvas.Left="257" Canvas.Top="26" DropDownOpened="comboBoxDevices_DropDownOpened" SelectionChanged="comboBoxDevices_SelectionChanged"/>
                     <DatePicker Height="26" Width="183" Canvas.Left="257" Canvas.Top="75"/>
                     <DatePicker Height="26" Width="182" Canvas.Left="10" Canvas.Top="75"/>
-                    <DataGrid Height="204" Width="472" Canvas.Left="479" Canvas.Top="26">
+                    <DataGrid x:Name="dataGridTab2" Height="204" Width="472" Canvas.Left="479" Canvas.Top="26" ItemsSource="{Binding DevicesBindingList2}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Key" Binding="{Binding Id}" />
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
                             <DataGridTextColumn Header="Configuration" Binding="{Binding Configuration}" />
                             <DataGridTextColumn Header="Device Type" Binding="{Binding TypeDevice}" />
                             <DataGridTextColumn Header="Value" Binding="{Binding Value}" />
@@ -42,6 +43,9 @@
                         </DataGrid.Columns>
                     </DataGrid>
                     <!-- Chart ide ovde (potrebna biblioteka preko Nugeta -->
+                    <chartingToolkit:Chart  Name="lineChart" Title="Analog Device chart" VerticalAlignment="Top" Height="254" Canvas.Left="228" Canvas.Top="323" Width="614">
+                        <chartingToolkit:LineSeries  DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}" IsSelectionEnabled="True"/>
+                    </chartingToolkit:Chart>
                 </Canvas>
             </TabItem>
 

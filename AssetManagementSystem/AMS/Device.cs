@@ -22,5 +22,7 @@ namespace AMS
             this.Configuration = Configuration;
             this.WorkTime = Double.Parse(WorkTime);
         }
+
+        public Device() { }
     }
 }
