@@ -31,8 +31,8 @@
                     <Label Name="lblDevice" Content="Choose device ID: " Canvas.Left="257"></Label>
                     <ComboBox x:Name="comboBoxController" Height="24" Width="182" Canvas.Left="10" Canvas.Top="26" DropDownOpened="comboBoxController_DropDownOpened" SelectionChanged="comboBoxController_SelectionChanged"/>
                     <ComboBox x:Name="comboBoxDevices" Height="24" Width="183" Canvas.Left="257" Canvas.Top="26" DropDownOpened="comboBoxDevices_DropDownOpened" SelectionChanged="comboBoxDevices_SelectionChanged"/>
-                    <DatePicker Height="26" Width="183" Canvas.Left="257" Canvas.Top="75"/>
-                    <DatePicker Height="26" Width="182" Canvas.Left="10" Canvas.Top="75"/>
+                    <DatePicker x:Name="startDatePicker" Height="26" Width="183" Canvas.Left="257" Canvas.Top="75"/>
+                    <DatePicker x:Name="endDatePicker" Height="26" Width="182" Canvas.Left="10" Canvas.Top="75"/>
                     <DataGrid x:Name="dataGridTab2" Height="204" Width="472" Canvas.Left="479" Canvas.Top="26" ItemsSource="{Binding DevicesBindingList2}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Id}" />

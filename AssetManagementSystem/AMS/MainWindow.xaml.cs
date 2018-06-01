@@ -36,7 +36,7 @@ namespace AMS
 
         public MainWindow()
         {
-            
+
             DevicesBindingList = new BindingList<Device>();
             DevicesBindingList2 = new BindingList<Device>();
 
@@ -48,23 +48,27 @@ namespace AMS
             // za svaki kontroler iscitaj uredjaje koji njemu pripadaju
             // za svaki uredjaj uzmi njegove informacije i prikazi na grafiku
 
-            showColumnChart();
+            //showColumnChart();
         }
 
         public void StartRefresh()
         {
-            Thread refresh = new Thread(()=> {
+            Thread refresh = new Thread(() =>
+            {
                 while (true)
                 {
                     this.Dispatcher.Invoke(() => { RealTimeProcessing.ProcessingData(ams.AMSDatabase, DevicesBindingList); });
-                    
+                    this.Dispatcher.Invoke(() => { showColumnChart(); });
+
                     Thread.Sleep(2000);
                 }
             });
-            
+
 
             refresh.Start();
         }
+
+
 
 
         private void comboBoxDevices_DropDownOpened(object sender, EventArgs e)
@@ -92,14 +96,14 @@ namespace AMS
             if (dataGridTab2.Items.Count > 0)
             {
                 dataGridTab2.ClearValue(ItemsControl.ItemBindingGroupProperty);
-                
+
             }
 
 
-            // prodji kroz 
-            for (int i=0; i < RealTimeProcessing.tuples.Count; i++)
+            // prodji kroz sve uredjaje i za dati ID izaberi sve promene za taj uredjaj
+            for (int i = 0; i < RealTimeProcessing.tuples.Count; i++)
             {
-                while (selectedDeviceID == RealTimeProcessing.tuples[i].Item2.Id)
+                if (selectedDeviceID == RealTimeProcessing.tuples[i].Item2.Id)
                 {
                     RealTimeProcessing.tuples[i].Item2.Id = d.Id;
                     RealTimeProcessing.tuples[i].Item2.Configuration = d.Configuration;
@@ -114,18 +118,25 @@ namespace AMS
 
         }
 
+
+
         private void showColumnChart()
         {
+
+
             List<KeyValuePair<string, int>> valueList = new List<KeyValuePair<string, int>>();
-            valueList.Add(new KeyValuePair<string, int>("Developer", 60));
+            valueList.Add(new KeyValuePair<string, int>(Convert.ToString(endDatePicker), 60));
             valueList.Add(new KeyValuePair<string, int>("Misc", 20));
             valueList.Add(new KeyValuePair<string, int>("Tester", 50));
             valueList.Add(new KeyValuePair<string, int>("QA", 30));
-            valueList.Add(new KeyValuePair<string, int>("Project Manager", 40));
+            valueList.Add(new KeyValuePair<string, int>(Convert.ToString(startDatePicker), 40));
 
             //Setting data for line chart
-            
+
             lineChart.DataContext = valueList;
+
+
+
         }
     }
 }
