@@ -1,1 +1,37 @@
-<AMS />
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AMS>
+  <LocalControllerCode id="2">
+    <Time>2018-04-06 01:24:23</Time>
+    <List>
+      <Device id="3">
+        <Type>a</Type>
+        <Time>2018-04-06 01:24:21</Time>
+        <Value>476</Value>
+        <WorkTime>123</WorkTime>
+      </Device>
+    </List>
+  </LocalControllerCode>
+  <LocalControllerCode id="1">
+    <Time>2018-04-06 01:24:26</Time>
+    <List>
+      <Device id="2">
+        <Type>d</Type>
+        <Time>2018-04-06 01:24:24</Time>
+        <Value>1</Value>
+        <WorkTime>123</WorkTime>
+      </Device>
+      <Device id="1">
+        <Type>a</Type>
+        <Time>2018-04-06 01:24:25</Time>
+        <Value>678</Value>
+        <WorkTime>123</WorkTime>
+      </Device>
+      <Device id="1">
+        <Type>a</Type>
+        <Time>2018-04-06 01:24:23</Time>
+        <Value>182</Value>
+        <WorkTime>123</WorkTime>
+      </Device>
+    </List>
+  </LocalControllerCode>
+</AMS>

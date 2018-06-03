@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<controller id="2">
+  <Device id="3">
+    <Type>a</Type>
+    <Time>2018-04-06 01:24:23</Time>
+    <Value>104</Value>
+    <WorkTime>123</WorkTime>
+  </Device>
+</controller>

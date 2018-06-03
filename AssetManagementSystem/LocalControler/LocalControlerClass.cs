@@ -123,7 +123,7 @@ namespace LocalControler
             do {
                 try
                 {
-                    xmlDoc.Load(@"../../../Communication/c1.xml");
+                    xmlDoc.Load(@"../../../Communication/c" + Id + ".xml");
                     uslov = false;
                 }
                 catch

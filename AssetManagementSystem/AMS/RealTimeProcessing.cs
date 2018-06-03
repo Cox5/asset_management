@@ -20,7 +20,7 @@ namespace AMS
         public static List<Tuple<string, ILocalDevice>> tuples = new List<Tuple<string, ILocalDevice>>();
         public static void ProcessingData(Dictionary<int, List<Tuple<string, List<Tuple<string, ILocalDevice>>>>> AMSDatabase, BindingList<Device> devices)
         {
-            //devices.Clear();
+            
             XmlDocument xmlDoc = new XmlDocument();
             do {
                 try
@@ -123,11 +123,11 @@ namespace AMS
         public static void RefreshUserInterface(BindingList<Device> devices, List<Device> newValues)
         {
 
-                
-                foreach (var item in newValues)
-                {
-                    devices.Add(item);
-                }
+            devices.Clear();
+            foreach (var item in newValues)
+            {
+                devices.Add(item);
+            }
             
         }
 
@@ -138,7 +138,7 @@ namespace AMS
 
             foreach (var item in devices)
             {
-                if (item.Configuration == controllerId && item.Id==deviceId)
+                if (String.Equals( item.Configuration, controllerId) && String.Equals(item.Id, deviceId))
                 {
                     retValue = true;
                     break;
