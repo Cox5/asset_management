@@ -130,17 +130,16 @@ namespace AMS
 
                 if (selectedDeviceID == RealTimeProcessing.tuples[i].Item2.Id)
                 {
-                    d.Id = RealTimeProcessing.tuples[i].Item2.Id;
-                    d.Configuration = RealTimeProcessing.tuples[i].Item2.Configuration;
-                    d.TypeDevice = RealTimeProcessing.tuples[i].Item2.TypeDevice;
-                    d.Value = RealTimeProcessing.tuples[i].Item2.Value;
-                    d.WorkTime = RealTimeProcessing.tuples[i].Item2.WorkTime;
-
-                    DevicesBindingList2.Add(d);
+                    DevicesBindingList2.Add(new Device(
+                        RealTimeProcessing.tuples[i].Item2.Id,
+                        RealTimeProcessing.tuples[i].Item2.TypeDevice,
+                        RealTimeProcessing.tuples[i].Item2.Value,
+                        RealTimeProcessing.tuples[i].Item2.Configuration,
+                        Convert.ToString(RealTimeProcessing.tuples[i].Item2.WorkTime)));
                 }
             }
+
             dataGridTab2.Items.Refresh();
-            
 
         }
 
