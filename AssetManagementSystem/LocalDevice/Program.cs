@@ -16,18 +16,26 @@ namespace LocalDevice
         {
 
             LocalDeviceClass.ListDirectory();
-
+            Random rnd = new Random();
             LocalDeviceClass localDeviceClass = new LocalDeviceClass();
 
 
             while (true) {
                 var result = localDeviceClass.WriteToXML() ? "Uspesno dodat uredaj" : "Greska pri dodavanju uredjaja";
+                if (String.Equals(localDeviceClass.TypeDevice, "a") || String.Equals(localDeviceClass.TypeDevice, "A"))
+                {
+                    localDeviceClass.Value = rnd.Next(1, 1000).ToString();
+                }
+                else
+                {
+                    localDeviceClass.Value = (rnd.Next(1, 1000) % 2).ToString();
+                }
                 Console.WriteLine($"\n*********{result}*********");
-                Console.Read();
+                Thread.Sleep(2000);
             }
 
 
-            Console.Read();
+            //Console.Read();
 
 
             

@@ -13,13 +13,27 @@ namespace AMS
 {
     public static class RealTimeProcessing
     {
+        public static bool uslov = true;
+        public static bool uslov1 = true;
         public static List<int> controllerListUI = new List<int>();
         public static List<string> devicesListUI = new List<string>();
         public static List<Tuple<string, ILocalDevice>> tuples = new List<Tuple<string, ILocalDevice>>();
         public static void ProcessingData(Dictionary<int, List<Tuple<string, List<Tuple<string, ILocalDevice>>>>> AMSDatabase, BindingList<Device> devices)
         {
+            //devices.Clear();
             XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load(@"..\..\..\Communication\AMS.xml");
+            do {
+                try
+                {
+                    xmlDoc.Load(@"..\..\..\Communication\AMS.xml");
+                    uslov = false;
+                }
+                catch
+                {
+                    uslov = true;
+                }
+            }
+            while (uslov);
 
             XmlNodeList nodeList = xmlDoc.DocumentElement.SelectNodes("/AMS/LocalControllerCode");
                 
@@ -51,7 +65,7 @@ namespace AMS
 
                     tuples.Add(deviceTuple);
 
-
+                    
 
                 }
 
@@ -80,13 +94,36 @@ namespace AMS
                 }
 
             }
-                RefreshUserInterface(devices, newDevices);
+            CreateRecieveXmlFile(); //Posle iscitavanja podataka, kreira se novi fajl (stare vrednosti se pregaze odnosno izbrisu)
+            RefreshUserInterface(devices, newDevices);
+        }
+
+        public static void CreateRecieveXmlFile()
+        {
+            XmlDocument doc = new XmlDocument();
+
+            XmlElement root = doc.CreateElement("AMS");
+
+            doc.AppendChild(root);
+            do
+            {
+                try
+                {
+                    doc.Save(@"..\..\..\Communication\AMS.xml");
+                    uslov1 = false;
+                }
+                catch
+                {
+                    uslov1 = true;
+                }
+            }
+            while (uslov1);
         }
 
         public static void RefreshUserInterface(BindingList<Device> devices, List<Device> newValues)
         {
 
-                devices.Clear();
+                
                 foreach (var item in newValues)
                 {
                     devices.Add(item);

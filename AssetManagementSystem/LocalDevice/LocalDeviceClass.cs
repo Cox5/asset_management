@@ -23,7 +23,7 @@ namespace LocalDevice
         public double WorkTime { get; set; }
         #endregion
 
-
+        public bool uslov = true;
         public LocalDeviceClass()
         {
 
@@ -102,10 +102,22 @@ namespace LocalDevice
         // Metoda za upis informacija o lokalnom uredjaju u XML fajl kontrolera koji ga obradjuje
         public bool WriteToXML()
         {
+            XDocument xmlDoc = null;
             try
             {
                 String xmlFileName = @"..\..\..\Communication\" + Configuration + ".xml";
-                XDocument xmlDoc = XDocument.Load(xmlFileName);
+                do {
+                    try
+                    {
+                        xmlDoc = XDocument.Load(xmlFileName);
+                        uslov = false;
+                    }
+                    catch
+                    {
+                        uslov = true;
+                    }
+                }
+                while (uslov);
 
                 xmlDoc.Root.Add(new XElement("Device",
                         new XAttribute("id", Id),

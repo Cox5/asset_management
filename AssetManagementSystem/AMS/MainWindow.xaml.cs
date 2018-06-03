@@ -36,7 +36,7 @@ namespace AMS
         private Object lockThis = new Object();
 
         // reference za odabir opcija iz combo box-a
-        private int selectedControllerID = -1;
+        //private int selectedControllerID = -1;
         private string selectedDeviceID = String.Empty;
 
         public MainWindow()

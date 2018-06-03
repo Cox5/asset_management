@@ -14,6 +14,7 @@ namespace LocalControler
 {
     public class LocalControlerClass : ILocalControler
     {
+        public bool uslov = true;
         public string Id { get; set; }
         public Dictionary<string, List<Tuple<string, ILocalDevice>>> Devices { get; set; }
 
@@ -39,6 +40,7 @@ namespace LocalControler
 
             doc.AppendChild(root);
             doc.Save(@"..\..\..\Communication\" + "c" + Id + ".xml");
+
         }
 
         public void SendData()
@@ -56,7 +58,7 @@ namespace LocalControler
                         Console.WriteLine("Greska pri pretrazi fajla: Fajl sa datim nazivom ne postoji...");
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     Console.Write($"Greska pri citanju foldera: Comunication direktorijum je prazan...");
                     Thread.Sleep(2500);
@@ -102,6 +104,7 @@ namespace LocalControler
 
 
                 xmlDoc.Save(xmlFileName);
+                Devices.Clear();
                 return true;
 
 
@@ -117,7 +120,18 @@ namespace LocalControler
         {
 
             XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load(@"../../../Communication/c1.xml");
+            do {
+                try
+                {
+                    xmlDoc.Load(@"../../../Communication/c1.xml");
+                    uslov = false;
+                }
+                catch
+                {
+                    uslov = true;
+                }
+            }
+            while (uslov);
             XmlNodeList nodeList = xmlDoc.DocumentElement.SelectNodes("/controller/Device");
 
             foreach (XmlNode node in nodeList)

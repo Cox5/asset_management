@@ -1,33 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <controller id="1">
-  <Device id="004">
-    <Type>D</Type>
-    <Time>2018-30-05 15:02:54</Time>
-    <Value>Open</Value>
-    <WorkTime>5000</WorkTime>
-  </Device>
-  <Device id="004">
-    <Type>D</Type>
-    <Time>2018-30-05 15:03:18</Time>
-    <Value>Open</Value>
-    <WorkTime>5000</WorkTime>
-  </Device>
-  <Device id="004">
-    <Type>D</Type>
-    <Time>2018-30-05 15:03:18</Time>
-    <Value>Open</Value>
-    <WorkTime>5000</WorkTime>
-  </Device>
-  <Device id="004">
-    <Type>D</Type>
-    <Time>2018-30-05 15:03:27</Time>
-    <Value>Open</Value>
-    <WorkTime>5000</WorkTime>
-  </Device>
-  <Device id="004">
-    <Type>D</Type>
-    <Time>2018-30-05 15:03:27</Time>
-    <Value>Open</Value>
-    <WorkTime>5000</WorkTime>
+  <Device id="1">
+    <Type>a</Type>
+    <Time>2018-03-06 20:59:54</Time>
+    <Value>225</Value>
+    <WorkTime>123</WorkTime>
   </Device>
 </controller>
