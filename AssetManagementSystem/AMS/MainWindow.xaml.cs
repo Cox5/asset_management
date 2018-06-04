@@ -155,7 +155,7 @@ namespace AMS
 
             for (int i = 0; i < DevicesBindingList2.Count; i++)
             {
-                valueList.Add(new KeyValuePair<string, int>(String.Empty, Convert.ToInt32(DevicesBindingList2[i].Value)));
+                valueList.Add(new KeyValuePair<string, int>(Convert.ToString(i), Convert.ToInt32(DevicesBindingList2[i].Value)));
             }
 
             //if (!String.IsNullOrEmpty(endDatePicker.Text))
