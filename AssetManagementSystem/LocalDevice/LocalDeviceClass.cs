@@ -47,7 +47,7 @@ namespace LocalDevice
                 }
                 else if (TypeDevice.Equals("D") || TypeDevice.Equals("d"))
                 {
-                    Console.Write("Unesite vrednost za digitalni uredjaj (ON/OFF/Open/Close): ");
+                    Console.Write("Unesite vrednost za digitalni uredjaj (1/0): ");
                     Value = Console.ReadLine();
 
                     Console.Write("Unesite broj nominalnih promena predvidjenih za uredjaj (broj) :");
