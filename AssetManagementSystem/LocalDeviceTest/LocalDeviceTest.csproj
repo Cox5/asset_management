@@ -31,13 +31,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="nunit.framework">
-      <HintPath>..\..\..\..\..\Desktop\Razvoj EES\NUnit-2.6.4\bin\framework\nunit.framework.dll</HintPath>
+      <HintPath>..\NUnit framework DLLs\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="nunit.mocks">
-      <HintPath>..\..\..\..\..\Desktop\Razvoj EES\NUnit-2.6.4\bin\framework\nunit.mocks.dll</HintPath>
+      <HintPath>..\NUnit framework DLLs\nunit.mocks.dll</HintPath>
     </Reference>
     <Reference Include="pnunit.framework">
-      <HintPath>..\..\..\..\..\Desktop\Razvoj EES\NUnit-2.6.4\bin\framework\pnunit.framework.dll</HintPath>
+      <HintPath>..\NUnit framework DLLs\pnunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

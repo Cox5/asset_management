@@ -77,7 +77,7 @@ namespace LocalControler
                 XDocument xmlDoc = XDocument.Load(xmlFileName);
 
                 xmlDoc.Root.Add(new XElement("LocalControllerCode", new XAttribute("id", Id),
-                                new XElement("Time", DateTime.Now.ToString("yyyy-dd-MM HH:mm:ss")),
+                                new XElement("Time", DateTimeOffset.UtcNow.ToUnixTimeSeconds()),
                                 new XElement("List")));
 
                 var children = xmlDoc.Elements();

@@ -122,7 +122,7 @@ namespace LocalDevice
                 xmlDoc.Root.Add(new XElement("Device",
                         new XAttribute("id", Id),
                         new XElement("Type", TypeDevice),
-                        new XElement("Time", DateTime.Now.ToString("yyyy-dd-MM HH:mm:ss")),
+                        new XElement("Time", DateTimeOffset.UtcNow.ToUnixTimeSeconds()),
                         new XElement("Value", Value),
                         new XElement("WorkTime", WorkTime)
 
