@@ -150,6 +150,7 @@ namespace AMS
 
             valueList = new List<KeyValuePair<string, int>>();
             //if (!String.IsNullOrEmpty(startDatePicker.Text))
+            //if (startDatePicker.Text == null)
                 valueList.Add(new KeyValuePair<string, int>(startDatePicker.Text, 0));
 
 

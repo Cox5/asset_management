@@ -9,19 +9,29 @@
         Title="MainWindow" Height="680" Width="1015"
         ResizeMode="NoResize">
     <Grid>
+
         <TabControl>
             <TabItem Header="Devices">
-                <DataGrid x:Name="dataGridDevices" HorizontalAlignment="Left" ColumnWidth="*" Height="487" Margin="10,97,0,0" VerticalAlignment="Top"
-                Width="987" ItemsSource="{Binding DevicesBindingList}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Key" Binding="{Binding Id}" />
-                        <DataGridTextColumn Header="Configuration" Binding="{Binding Configuration}" />
-                        <DataGridTextColumn Header="Device Type" Binding="{Binding TypeDevice}" />
-                        <DataGridTextColumn Header="Value" Binding="{Binding Value}" />
-                        <DataGridTextColumn Header="Work Time" Binding="{Binding WorkTime}" />
-                    </DataGrid.Columns>
+                <Canvas>
 
-                </DataGrid>
+                    <DataGrid x:Name="dataGridDevices" HorizontalAlignment="Left" ColumnWidth="*" Height="487" Margin="10,97,0,0" VerticalAlignment="Top"
+                Width="987" ItemsSource="{Binding DevicesBindingList}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Key" Binding="{Binding Id}" />
+                            <DataGridTextColumn Header="Configuration" Binding="{Binding Configuration}" />
+                            <DataGridTextColumn Header="Device Type" Binding="{Binding TypeDevice}" />
+                            <DataGridTextColumn Header="Value" Binding="{Binding Value}" />
+                            <DataGridTextColumn Header="Work Time" Binding="{Binding WorkTime}" />
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+                    <Rectangle Height="82" Canvas.Left="388" Canvas.Top="10" Width="205">
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="Media/Asset-Management-System.png"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+
+                </Canvas>
             </TabItem>
             <TabItem Header="Device Info">
                 <!--" ComboBox x:Name="Kontroleri" Height="28" Margin="0,34,794,0" HorizontalAlignment="Right" Width="169" VerticalAlignment="Top"/-->
@@ -51,12 +61,6 @@
                     </chartingToolkit:Chart>
                 </Canvas>
             </TabItem>
-
-
-
-
-
-
         </TabControl>
     </Grid>
 </Window>
