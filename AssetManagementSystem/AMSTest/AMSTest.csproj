@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8275B805-C51D-4F33-B291-D60D7BDE01A6}</ProjectGuid>
+    <ProjectGuid>{97D64047-4231-45C0-A826-EE635907D526}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LocalDeviceTest</RootNamespace>
-    <AssemblyName>LocalDeviceTest</AssemblyName>
+    <RootNamespace>AMSTest</RootNamespace>
+    <AssemblyName>AMSTest</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -33,12 +33,6 @@
     <Reference Include="nunit.framework">
       <HintPath>..\NUnit framework DLLs\nunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.mocks">
-      <HintPath>..\NUnit framework DLLs\nunit.mocks.dll</HintPath>
-    </Reference>
-    <Reference Include="pnunit.framework">
-      <HintPath>..\NUnit framework DLLs\pnunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,13 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LocalDeviceClassTest.cs" />
+    <Compile Include="RealTimeProcessingTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LocalDevice\LocalDevice.csproj">
-      <Project>{5EB895FF-9A2C-4B98-A388-538C223A6FDA}</Project>
-      <Name>LocalDevice</Name>
+    <ProjectReference Include="..\AMS\AMS.csproj">
+      <Project>{CA73B236-EF52-457E-ADD1-178CDCACFF05}</Project>
+      <Name>AMS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AMS_Common\AMS_Common.csproj">
+      <Project>{DDDB2275-758E-4E54-BB91-406F385032FB}</Project>
+      <Name>AMS_Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

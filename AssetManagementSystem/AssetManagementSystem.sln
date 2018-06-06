@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMS_Common", "AMS_Common\AM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalDeviceTest", "LocalDeviceTest\LocalDeviceTest.csproj", "{8275B805-C51D-4F33-B291-D60D7BDE01A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMSTest", "AMSTest\AMSTest.csproj", "{97D64047-4231-45C0-A826-EE635907D526}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{8275B805-C51D-4F33-B291-D60D7BDE01A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8275B805-C51D-4F33-B291-D60D7BDE01A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8275B805-C51D-4F33-B291-D60D7BDE01A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97D64047-4231-45C0-A826-EE635907D526}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97D64047-4231-45C0-A826-EE635907D526}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97D64047-4231-45C0-A826-EE635907D526}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97D64047-4231-45C0-A826-EE635907D526}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

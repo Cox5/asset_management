@@ -40,6 +40,8 @@
                     <!--<Label Name="lblController" Content="Choose controller: " Canvas.Left="10"></Label>-->
                     <Label Name="lblDevice" Content="Choose device ID: " Canvas.Left="10" Canvas.Top="-5"></Label>
                     <!--<ComboBox x:Name="comboBoxController" Height="24" Width="182" Canvas.Left="10" Canvas.Top="26" DropDownOpened="comboBoxController_DropDownOpened" SelectionChanged="comboBoxController_SelectionChanged"/>-->
+                    <Label Name="lblChanges" Content="Total device changes: " Canvas.Left="235" Canvas.Top="24"></Label>
+                    <TextBlock x:Name="txtBlockDeviceChanges" HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="33" Canvas.Left="360" Canvas.Top="30"/>
                     <ComboBox x:Name="comboBoxDevices" Height="24" Width="183" Canvas.Left="10" Canvas.Top="26" DropDownOpened="comboBoxDevices_DropDownOpened" SelectionChanged="comboBoxDevices_SelectionChanged"/>
                     <Label Name="lblStartDate" Content="Start date:" Canvas.Left="10" Canvas.Top="58" Width="115"></Label>
                     <Label Name="lblEndDate" Content="End date:" Canvas.Left="259" Canvas.Top="58" Width="115"></Label>
@@ -57,7 +59,7 @@
                     </DataGrid>
                     <!-- Chart ide ovde (potrebna biblioteka preko Nugeta -->
                     <chartingToolkit:Chart  Name="lineChart" Title="Analog Device chart" VerticalAlignment="Top" Height="329" Canvas.Left="10" Canvas.Top="270" Width="960">
-                        <chartingToolkit:LineSeries  DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}" IsSelectionEnabled="True"/>
+                        <chartingToolkit:LineSeries  DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}" IsSelectionEnabled="True" Title="Device Changes"/>
                     </chartingToolkit:Chart>
                 </Canvas>
             </TabItem>
