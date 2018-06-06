@@ -57,7 +57,7 @@ namespace LocalDevice
                 else
                 {
                     Console.WriteLine("Pogresno unet tip uredjaja... Unesite \'A\' ili \'D\' za tip uredjaja.");
-                    //throw new ArgumentException("Pogresno unet tip uredjaja (unesite A ili D)");
+                    //throw new Exception("Pogresno unet tip uredjaja (unesite A ili D)");
                 }
             } while (!TypeDevice.Equals("A") || !TypeDevice.Equals("a") || !TypeDevice.Equals("D") || !TypeDevice.Equals("d"));
 

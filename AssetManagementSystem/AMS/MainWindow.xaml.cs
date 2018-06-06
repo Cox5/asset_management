@@ -139,6 +139,7 @@ namespace AMS
                 }
             }
 
+            txtBlockDeviceChanges.Text = Convert.ToString(DevicesBindingList2.Count);       // ukupan broj promena za zadati uredjaj
             dataGridTab2.Items.Refresh();
 
         }
