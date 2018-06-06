@@ -15,6 +15,7 @@ namespace LocalControler
     public class LocalControlerClass : ILocalControler
     {
         public bool uslov = true;
+        public bool uslov1 = true;
         public string Id { get; set; }
         public Dictionary<string, List<Tuple<string, ILocalDevice>>> Devices { get; set; }
 
@@ -39,7 +40,19 @@ namespace LocalControler
             root.SetAttribute("id", Id);
 
             doc.AppendChild(root);
-            doc.Save(@"..\..\..\Communication\" + "c" + Id + ".xml");
+            do
+            {
+                try
+                {
+                    doc.Save(@"..\..\..\Communication\" + "c" + Id + ".xml");
+                    uslov1 = false;
+                }
+                catch
+                {
+                    uslov1 = true;
+                }
+            }
+            while (uslov1);
 
         }
 

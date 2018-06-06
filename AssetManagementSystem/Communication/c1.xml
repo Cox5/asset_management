@@ -2,20 +2,8 @@
 <controller id="1">
   <Device id="1">
     <Type>a</Type>
-    <Time>2018-04-06 11:01:15</Time>
-    <Value>867</Value>
-    <WorkTime>123</WorkTime>
-  </Device>
-  <Device id="2">
-    <Type>d</Type>
-    <Time>2018-04-06 11:01:16</Time>
-    <Value>0</Value>
-    <WorkTime>23</WorkTime>
-  </Device>
-  <Device id="1">
-    <Type>a</Type>
-    <Time>2018-04-06 11:01:18</Time>
-    <Value>620</Value>
+    <Time>1528276120</Time>
+    <Value>124</Value>
     <WorkTime>123</WorkTime>
   </Device>
 </controller>

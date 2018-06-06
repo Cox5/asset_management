@@ -46,7 +46,7 @@
                     <DatePicker x:Name="startDatePicker" Height="26" Width="182" Canvas.Left="11" Canvas.Top="84" SelectedDateChanged="startDatePicker_SelectedDateChanged"/>
                     <DatePicker x:Name="endDatePicker" Height="26" Width="183" Canvas.Left="259" Canvas.Top="84"/>
                     <Button x:Name="btnShowChart" Content="Show Chart" Height="28" Width="90" Canvas.Left="352" Canvas.Top="134" Click="btnShowChart_Click"/>
-                    <DataGrid x:Name="dataGridTab2" Height="204" Width="472" Canvas.Left="479" Canvas.Top="26" ItemsSource="{Binding DevicesBindingList2}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False">
+                    <DataGrid x:Name="dataGridTab2" Height="204" Width="472" ColumnWidth="*" Canvas.Left="479" Canvas.Top="26" ItemsSource="{Binding DevicesBindingList2}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
                             <DataGridTextColumn Header="Configuration" Binding="{Binding Configuration}" />
@@ -59,6 +59,21 @@
                     <chartingToolkit:Chart  Name="lineChart" Title="Analog Device chart" VerticalAlignment="Top" Height="329" Canvas.Left="10" Canvas.Top="270" Width="960">
                         <chartingToolkit:LineSeries  DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}" IsSelectionEnabled="True"/>
                     </chartingToolkit:Chart>
+                </Canvas>
+            </TabItem>
+            <TabItem Header="Alarm">
+                <Canvas>
+                    <DataGrid x:Name="dataGridTab3" Height="306" Canvas.Left="83" Canvas.Top="208" Width="832" ColumnWidth="*" ItemsSource="{Binding DevicesBindingList2}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
+                            <DataGridTextColumn Header="Configuration" Binding="{Binding Configuration}" />
+                            <DataGridTextColumn Header="Device Type" Binding="{Binding TypeDevice}" />
+                            <DataGridTextColumn Header="Value" Binding="{Binding Value}" />
+                            <DataGridTextColumn Header="Work Time" Binding="{Binding WorkTime}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <ComboBox Height="32" Canvas.Left="83" Canvas.Top="75" Width="234"/>
+
                 </Canvas>
             </TabItem>
         </TabControl>

@@ -24,6 +24,7 @@ namespace AMS
     /// </summary>
     public partial class MainWindow : Window
     {
+        #region Field
         /* triger za pauziranje thread-a za chart: kada je izabran samo uredjaj iz combo box-a, chart se ucitava svake 3 sekunde (thread je aktivan) => datumi nisu odabrani
          * kada su datumi odabrani, treba samo jednom iscrtati promene za dati period i pauzira se thread i jednom se poziva funckija za crtanja charta */
         ManualResetEvent trigger = new ManualResetEvent(false);         
@@ -31,14 +32,13 @@ namespace AMS
         AMSClass ams = new AMSClass();
         public static BindingList<Device> DevicesBindingList { get; set; }
         public static BindingList<Device> DevicesBindingList2 { get; set; }
-        public static List<KeyValuePair<string, int>> valueList = null;         // lista za iscrtavanje charta
+        public static List<KeyValuePair<string, int>> valueList { get; set; }         // lista za iscrtavanje charta
         public int counter = 0; // brojac za chart na x osi
-        private Object lockThis = new Object();
 
         // reference za odabir opcija iz combo box-a
         //private int selectedControllerID = -1;
         private string selectedDeviceID = String.Empty;
-
+        #endregion
         public MainWindow()
         {
 
