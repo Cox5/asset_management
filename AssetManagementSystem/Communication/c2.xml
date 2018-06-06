@@ -1,15 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <controller id="2">
-  <Device id="4">
-    <Type>a</Type>
-    <Time>1528225833</Time>
-    <Value>551</Value>
-    <WorkTime>123</WorkTime>
-  </Device>
-  <Device id="3">
+  <Device id="2">
     <Type>d</Type>
-    <Time>1528225833</Time>
-    <Value>1</Value>
-    <WorkTime>123</WorkTime>
+    <Time>1528321300</Time>
+    <Value>0</Value>
+    <WorkTime>12</WorkTime>
   </Device>
 </controller>

@@ -63,7 +63,7 @@
             </TabItem>
             <TabItem Header="Alarm">
                 <Canvas>
-                    <DataGrid x:Name="dataGridTab3" Height="306" Canvas.Left="83" Canvas.Top="208" Width="832" ColumnWidth="*" ItemsSource="{Binding DevicesBindingList2}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False">
+                    <DataGrid x:Name="dataGridTab3" Height="350" Canvas.Left="83" Canvas.Top="164" Width="832" ColumnWidth="*" ItemsSource="{Binding DevicesBindingList3}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
                             <DataGridTextColumn Header="Configuration" Binding="{Binding Configuration}" />
@@ -72,10 +72,14 @@
                             <DataGridTextColumn Header="Work Time" Binding="{Binding WorkTime}" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    <ComboBox Height="32" Canvas.Left="83" Canvas.Top="75" Width="234"/>
-
+                    <ComboBox x:Name="comboBoxTypeRepors" Height="32" Canvas.Left="83" Canvas.Top="75" Width="184" SelectionChanged="comboBoxTypeRepors_SelectionChanged" DropDownOpened="comboBoxTypeRepors_DropDownOpened"/>
+                    <ComboBox x:Name="comboBoxDevice" Height="32" Canvas.Left="319" Canvas.Top="75" Width="184" SelectionChanged="comboBoxDevice_SelectionChanged" DropDownOpened="comboBoxDevice_DropDownOpened"/>
+                    <Button x:Name="btnReport" Content="Report" Height="32" Width="174" Canvas.Left="783" Canvas.Top="75" Click="btnReport_Click"/>
+                    <TextBox x:Name="textBoxReportValue" Height="32" Canvas.Left="540" TextWrapping="Wrap" Text="" Canvas.Top="75" Width="203"/>
                 </Canvas>
             </TabItem>
+
+
         </TabControl>
     </Grid>
 </Window>

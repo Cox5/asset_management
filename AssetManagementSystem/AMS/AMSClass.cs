@@ -19,6 +19,4 @@ namespace AMS
             AMSDatabase = new Dictionary<int, List<Tuple<string, List<Tuple<string, ILocalDevice>>>>>();
         }
     }
-
-
 }
