@@ -18,6 +18,7 @@ namespace AMS
         public static List<int> controllerListUI = new List<int>();
         public static List<string> devicesListUI = new List<string>();
         public static List<Tuple<string, ILocalDevice>> tuples = new List<Tuple<string, ILocalDevice>>();
+        public static Dictionary<int, Dictionary<string, List<Tuple<string, Device>>>> changesListOdDevice = new Dictionary<int, Dictionary<string, List<Tuple<string, Device>>>>(); 
         public static void ProcessingData(Dictionary<int, List<Tuple<string, List<Tuple<string, ILocalDevice>>>>> AMSDatabase, BindingList<Device> devices)
         {
             
@@ -65,7 +66,30 @@ namespace AMS
 
                     tuples.Add(deviceTuple);
 
-                    
+                    //Dodavanje svih promena uredjaja pod njihovim id-om....
+                    if (changesListOdDevice.ContainsKey(controllerId))
+                    {
+                        if (changesListOdDevice[controllerId].ContainsKey(deviceId)) {
+                            Device newDevice = new Device(deviceId, deviceType, deviceValue, Convert.ToString(controllerId), deviceWorkTime);
+                            changesListOdDevice[controllerId][deviceId].Add(new Tuple<string, Device>(deviceTime, newDevice));
+                        }
+                        else
+                        {
+                            Device newDevice = new Device(deviceId, deviceType, deviceValue, Convert.ToString(controllerId), deviceWorkTime);
+                            List<Tuple<string, Device>> list = new List<Tuple<string, Device>>() { new Tuple<string, Device>(deviceTime, newDevice) };
+                            
+                            changesListOdDevice[controllerId].Add(deviceId, list);
+                        }
+                    }
+                    else
+                    {
+                        Device newDevice = new Device(deviceId, deviceType, deviceValue, Convert.ToString(controllerId), deviceWorkTime);
+                        List<Tuple<string, Device>> list = new List<Tuple<string, Device>>() { new Tuple<string, Device>(deviceTime, newDevice) };
+
+                        Dictionary<string, List<Tuple<string, Device>>> dict = new Dictionary<string, List<Tuple<string, Device>>>();
+                        dict.Add(deviceId, list);
+                        changesListOdDevice.Add(controllerId, dict);
+                    }
 
                 }
 

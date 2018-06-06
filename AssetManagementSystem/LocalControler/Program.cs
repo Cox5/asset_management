@@ -13,13 +13,11 @@ namespace LocalControler
         {
             LocalControlerClass controller = new LocalControlerClass();
 
-            //Console.ReadKey();
             while (true) {
                 controller.RecieveData();
                 controller.SendData();
                 Thread.Sleep(3000);
             }
-            Console.ReadKey();
         }
     }
 }
