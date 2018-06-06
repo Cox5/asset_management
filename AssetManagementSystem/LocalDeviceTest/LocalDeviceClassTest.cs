@@ -34,19 +34,19 @@ namespace LocalDeviceTest
         }
 
 
-        //[Test]
-        //[TestCase("01", "A", "1200", 500)]
-        //[TestCase("02", "D", "1", 5000)]
-        //public void LocalDeviceClassLimitParameters(string id, string typeDevice, string value, double workTime)
-        //{
-        //    LocalDeviceClass localDevice = new LocalDeviceClass(id, typeDevice, value, workTime);
+        [Test]
+        [TestCase("111111111", "a", "0", 1000000)]
+        [TestCase("000000000", "d", "0", 1000000)]
+        public void LocalDeviceClassLimitParameters(string id, string typeDevice, string value, double workTime)
+        {
+            LocalDeviceClass localDevice = new LocalDeviceClass(id, typeDevice, value, workTime);
 
-        //    Assert.AreEqual(localDevice.Id, id);
-        //    Assert.AreEqual(localDevice.TypeDevice, typeDevice);
-        //    Assert.AreEqual(localDevice.Value, value);
-        //    Assert.AreEqual(localDevice.WorkTime, workTime);
+            Assert.AreEqual(localDevice.Id, id);
+            Assert.AreEqual(localDevice.TypeDevice, typeDevice);
+            Assert.AreEqual(localDevice.Value, value);
+            Assert.AreEqual(localDevice.WorkTime, workTime);
 
-        //}
+        }
 
 
     }
