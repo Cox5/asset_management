@@ -57,6 +57,7 @@ namespace LocalDevice
                 else
                 {
                     Console.WriteLine("Pogresno unet tip uredjaja... Unesite \'A\' ili \'D\' za tip uredjaja.");
+                    throw new ArgumentException("Pogresno unet tip uredjaja (unesite A ili D)");
                 }
             } while (!TypeDevice.Equals("A") || !TypeDevice.Equals("a") || !TypeDevice.Equals("D") || !TypeDevice.Equals("d"));
 
@@ -66,6 +67,10 @@ namespace LocalDevice
 
         public LocalDeviceClass(string id, string typeDevice, string value, double workTime)
         {
+            if(!typeDevice.Equals("A") || !typeDevice.Equals("a") || !typeDevice.Equals("D") || !typeDevice.Equals("d"))
+            {
+                throw new ArgumentException("Pogresno unet tip uredjaja (unesite A ili D)");
+            }
             this.Id = id;
             this.TypeDevice = typeDevice;
             this.Value = value;
@@ -91,7 +96,7 @@ namespace LocalDevice
                 return true;      // kada uspesno iscita sve fajlove, izadji iz provere
 
             }
-            catch (Exception)
+            catch (ArgumentException)
             {
                 Console.Write($"Greska pri citanju foldera: Communication direktorijum je prazan...");
                 return false;

@@ -57,7 +57,7 @@
                     </DataGrid>
                     <!-- Chart ide ovde (potrebna biblioteka preko Nugeta -->
                     <chartingToolkit:Chart  Name="lineChart" Title="Analog Device chart" VerticalAlignment="Top" Height="329" Canvas.Left="10" Canvas.Top="270" Width="960">
-                        <chartingToolkit:LineSeries  DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}" IsSelectionEnabled="True"/>
+                        <chartingToolkit:LineSeries  DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}" IsSelectionEnabled="True" Title="Device Changes"/>
                     </chartingToolkit:Chart>
                 </Canvas>
             </TabItem>
