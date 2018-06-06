@@ -11,14 +11,6 @@ namespace LocalDeviceTest
     [TestFixture]
     public class LocalDeviceClassTest
     {
-        /* LocalDeviceClass : 4 metode
-         * LocalDeviceClass()
-         * LocalDeviceClass(string id, string typeDevice, string value, double workTime)
-         * bool ListDirectory()
-         * bool WriteToXML()
-         * */
-
-            // testiranje konstruktora sa dobrim parametrima LocalDeviceClass(str,str,str,double)
         [Test]
         [TestCase("01", "A", "1200", 500)]
         [TestCase("02", "D", "1", 5000)]

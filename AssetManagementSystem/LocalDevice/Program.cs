@@ -31,7 +31,7 @@ namespace LocalDevice
                     localDeviceClass.Value = (rnd.Next(1, 1000) % 2).ToString();
                 }
                 Console.WriteLine($"\n*********{result}*********");
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
             }
 
 

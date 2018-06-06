@@ -27,7 +27,7 @@ namespace AMS
         #region Field
         /* triger za pauziranje thread-a za chart: kada je izabran samo uredjaj iz combo box-a, chart se ucitava svake 3 sekunde (thread je aktivan) => datumi nisu odabrani
          * kada su datumi odabrani, treba samo jednom iscrtati promene za dati period i pauzira se thread i jednom se poziva funckija za crtanja charta */
-        ManualResetEvent trigger = new ManualResetEvent(false);         
+        ManualResetEvent trigger = new ManualResetEvent(false);
 
         AMSClass ams = new AMSClass();
         public static BindingList<Device> DevicesBindingList { get; set; }
@@ -37,7 +37,6 @@ namespace AMS
         public int counter = 0; // brojac za chart na x osi
 
         // reference za odabir opcija iz combo box-a
-        //private int selectedControllerID = -1;
         private string selectedDeviceID = String.Empty;
         private string selectedTypeReport = String.Empty;
         private string selectedReportDevice = String.Empty;
@@ -54,8 +53,7 @@ namespace AMS
             InitializeComponent();
             StartRefresh();
             StartChart();
-            
-            //comboBoxController.ItemsSource = RealTimeProcessing.controllerListUI;
+
             comboBoxDevices.ItemsSource = RealTimeProcessing.devicesListUI;
 
         }
@@ -85,7 +83,7 @@ namespace AMS
                 while (true)
                 {
                     this.Dispatcher.Invoke(() => { showColumnChart(); });
-                    trigger.WaitOne();      
+                    trigger.WaitOne();
                     Thread.Sleep(3000);
                 }
             });
@@ -102,16 +100,6 @@ namespace AMS
             comboBoxDevices.Items.Refresh();
         }
 
-        //private void comboBoxController_DropDownOpened(object sender, EventArgs e)
-        //{
-        //    comboBoxController.ItemsSource = RealTimeProcessing.controllerListUI;
-        //    comboBoxController.Items.Refresh();
-        //}
-
-        //private void comboBoxController_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-        //    selectedControllerID = Convert.ToInt32(comboBoxController.SelectedItem);
-        //}
 
         private void comboBoxDevices_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -155,21 +143,20 @@ namespace AMS
         {
 
             valueList = new List<KeyValuePair<string, int>>();
-            //if (!String.IsNullOrEmpty(startDatePicker.Text))
-            //if (startDatePicker.Text == null)
-                valueList.Add(new KeyValuePair<string, int>(startDatePicker.Text, 0));
-
+            valueList.Add(new KeyValuePair<string, int>(startDatePicker.Text, 0));
 
             for (int i = 0; i < DevicesBindingList2.Count; i++)
             {
                 valueList.Add(new KeyValuePair<string, int>(Convert.ToString(i), Convert.ToInt32(DevicesBindingList2[i].Value)));
+                if (i > 50)
+                {
+                    break;      // prestanak crtanja grafika kada se nakupi 60 promena zbog opterecenja memorije
+                }
             }
 
-            //if (!String.IsNullOrEmpty(endDatePicker.Text))
-                valueList.Add(new KeyValuePair<string, int>(endDatePicker.Text, 0));
+            valueList.Add(new KeyValuePair<string, int>(endDatePicker.Text, 0));
 
             //Setting data for line chart
-
             lineChart.DataContext = valueList;
 
 
@@ -196,65 +183,73 @@ namespace AMS
 
         private void btnReport_Click(object sender, RoutedEventArgs e)
         {
-            DevicesBindingList3.Clear();
-            limitOfReport = textBoxReportValue.Text;
-            if (String.Equals(selectedTypeReport, "Changes"))
+            if (comboBoxTypeRepors.SelectedItem == null || comboBoxDevice.SelectedItem == null || String.IsNullOrWhiteSpace(textBoxReportValue.Text))
             {
-                //int numOdChanges = 0;
-                if (String.Equals(selectedReportDevice, "All"))
-                {
-                    foreach (var item in RealTimeProcessing.changesListOdDevice.Values)
-                    {
-                        foreach (var item1 in item.Values)
-                        {
-                            if (Convert.ToInt32(limitOfReport) <= item1.Count)
-                            {
-                                DevicesBindingList3.Add(item1.Last().Item2);
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    foreach (var item in RealTimeProcessing.changesListOdDevice[Convert.ToInt32(selectedReportDevice)].Values)
-                    {
-                        if (Convert.ToInt32(limitOfReport) <= item.Count)
-                        {
-                            DevicesBindingList3.Add(item.Last().Item2);
-                        }
-                    }
-                }
+                MessageBox.Show("You must select all options before generating a report!", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                if (String.Equals(selectedReportDevice, "All"))
+
+                DevicesBindingList3.Clear();
+                limitOfReport = textBoxReportValue.Text;
+                if (String.Equals(selectedTypeReport, "Changes"))
                 {
-                    foreach (var item in RealTimeProcessing.changesListOdDevice.Values)
+                    //int numOdChanges = 0;
+                    if (String.Equals(selectedReportDevice, "All"))
                     {
-                        foreach (var item1 in item.Values)
+                        foreach (var item in RealTimeProcessing.changesListOdDevice.Values)
                         {
-                            DateTime time1 = new DateTime(TimeSpan.FromMinutes(Convert.ToDouble(limitOfReport)).Ticks);
-                            DateTime time2 = new DateTime(TimeSpan.FromSeconds(DateTimeOffset.UtcNow.ToUnixTimeSeconds() - Convert.ToInt32(item1.First().Item1)).Ticks);
-                            if (time1 <= time2)
+                            foreach (var item1 in item.Values)
                             {
-                                DevicesBindingList3.Add(item1.Last().Item2);
+                                if (Convert.ToInt32(limitOfReport) <= item1.Count)
+                                {
+                                    DevicesBindingList3.Add(item1.Last().Item2);
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        foreach (var item in RealTimeProcessing.changesListOdDevice[Convert.ToInt32(selectedReportDevice)].Values)
+                        {
+                            if (Convert.ToInt32(limitOfReport) <= item.Count)
+                            {
+                                DevicesBindingList3.Add(item.Last().Item2);
                             }
                         }
                     }
                 }
                 else
                 {
-                    foreach (var item in RealTimeProcessing.changesListOdDevice[Convert.ToInt32(selectedReportDevice)].Values)
+                    if (String.Equals(selectedReportDevice, "All"))
                     {
-                        DateTime time1 = new DateTime(TimeSpan.FromMinutes(Convert.ToDouble(limitOfReport)).Ticks);
-                        DateTime time2 = new DateTime(TimeSpan.FromSeconds(DateTimeOffset.UtcNow.ToUnixTimeSeconds() - Convert.ToInt32(item.First().Item1)).Ticks);
-                        if (time1>=time2)
+                        foreach (var item in RealTimeProcessing.changesListOdDevice.Values)
                         {
-                            DevicesBindingList3.Add(item.Last().Item2);
+                            foreach (var item1 in item.Values)
+                            {
+                                DateTime time1 = new DateTime(TimeSpan.FromMinutes(Convert.ToDouble(limitOfReport)).Ticks);
+                                DateTime time2 = new DateTime(TimeSpan.FromSeconds(DateTimeOffset.UtcNow.ToUnixTimeSeconds() - Convert.ToInt32(item1.First().Item1)).Ticks);
+                                if (time1 <= time2)
+                                {
+                                    DevicesBindingList3.Add(item1.Last().Item2);
+                                }
+                            }
                         }
                     }
+                    else
+                    {
+                        foreach (var item in RealTimeProcessing.changesListOdDevice[Convert.ToInt32(selectedReportDevice)].Values)
+                        {
+                            DateTime time1 = new DateTime(TimeSpan.FromMinutes(Convert.ToDouble(limitOfReport)).Ticks);
+                            DateTime time2 = new DateTime(TimeSpan.FromSeconds(DateTimeOffset.UtcNow.ToUnixTimeSeconds() - Convert.ToInt32(item.First().Item1)).Ticks);
+                            if (time1 >= time2)
+                            {
+                                DevicesBindingList3.Add(item.Last().Item2);
+                            }
+                        }
+                    }
+
                 }
-            
             }
         }
 

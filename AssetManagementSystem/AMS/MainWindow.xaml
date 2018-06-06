@@ -74,10 +74,13 @@
                             <DataGridTextColumn Header="Work Time" Binding="{Binding WorkTime}" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    <ComboBox x:Name="comboBoxTypeRepors" Height="32" Canvas.Left="83" Canvas.Top="75" Width="184" SelectionChanged="comboBoxTypeRepors_SelectionChanged" DropDownOpened="comboBoxTypeRepors_DropDownOpened"/>
-                    <ComboBox x:Name="comboBoxDevice" Height="32" Canvas.Left="319" Canvas.Top="75" Width="184" SelectionChanged="comboBoxDevice_SelectionChanged" DropDownOpened="comboBoxDevice_DropDownOpened"/>
-                    <Button x:Name="btnReport" Content="Report" Height="32" Width="174" Canvas.Left="783" Canvas.Top="75" Click="btnReport_Click"/>
-                    <TextBox x:Name="textBoxReportValue" Height="32" Canvas.Left="540" TextWrapping="Wrap" Text="" Canvas.Top="75" Width="203"/>
+                    <Label x:Name="lblChangesReport" Content="Change type:" Canvas.Left="83" Canvas.Top="44" Width="86"/>
+                    <ComboBox x:Name="comboBoxTypeRepors" Height="24" Canvas.Left="83" Canvas.Top="75" Width="144" SelectionChanged="comboBoxTypeRepors_SelectionChanged" DropDownOpened="comboBoxTypeRepors_DropDownOpened"/>
+                    <Label x:Name="lblDeviceReport" Content="Device:" Canvas.Left="319" Canvas.Top="44" Width="53"/>
+                    <ComboBox x:Name="comboBoxDevice" Height="24" Canvas.Left="319" Canvas.Top="75" Width="144" SelectionChanged="comboBoxDevice_SelectionChanged" DropDownOpened="comboBoxDevice_DropDownOpened"/>
+                    <Button x:Name="btnReport" Content="Report" Height="32" Width="174" Canvas.Left="741" Canvas.Top="67" Click="btnReport_Click"/>
+                    <Label x:Name="lblLimitReport" Content="Limit:" Canvas.Left="523" Canvas.Top="49" Width="86"/>
+                    <TextBox x:Name="textBoxReportValue" Height="24" Canvas.Left="523" TextWrapping="Wrap" Text="" Canvas.Top="75" Width="144"/>
                 </Canvas>
             </TabItem>
 
